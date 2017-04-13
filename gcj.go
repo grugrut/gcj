@@ -18,7 +18,7 @@ func main() {
 	scanner.Split(bufio.ScanWords)
 	defer fin.Close()
 
-	fout, _ := os.OpenFile("output.txt", os.O_WRONLY|os.O_CREATE, 0644)
+	fout, _ := os.Create("output.txt")
 	writer = bufio.NewWriter(fout)
 	defer fout.Close()
 
@@ -39,6 +39,12 @@ func next() string {
 func nextInt() int {
 	scanner.Scan()
 	ret, _ := strconv.Atoi(scanner.Text())
+	return ret
+}
+
+func nextInt64() int64 {
+	scanner.Scan()
+	ret, _ := strconv.ParseInt(scanner.Text(), 10, 64)
 	return ret
 }
 
